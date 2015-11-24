@@ -3,16 +3,16 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.github.marcosemiao.maven.shade</groupId>
-	<artifactId>shade-merge-manifest-transformer</artifactId>
+	<artifactId>maven-shade-merge-manifest-transformer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<packaging>jar</packaging>
 
 	<name>Maven Shade Merge MANIFEST Transformer</name>
 
-	<description>Merge all MANIFEST.MF files</description>
+	<description>Merge MANIFEST.MF files</description>
 
-	<url>https://github.com/marcosemiao/shade-merge-manifest-transformer</url>
+	<url>https://github.com/marcosemiao/maven-shade-merge-manifest-transformer</url>
 
 	<licenses>
 		<license>
@@ -25,14 +25,14 @@
 		<developer>
 			<name>Marco Semiao</name>
 			<url>https://marcosemiao4j.wordpress.com</url>
-			<organizationUrl>https://github.com/marcosemiao/shade-merge-manifest-transformer</organizationUrl>
+			<organizationUrl>https://github.com/marcosemiao/maven-shade-merge-manifest-transformer</organizationUrl>
 		</developer>
 	</developers>
 
 	<scm>
-		<connection>scm:git:git@github.com:marcosemiao/shade-merge-manifest-transformer.git</connection>
-		<developerConnection>scm:git:git@github.com:marcosemiao/shade-merge-manifest-transformer.git</developerConnection>
-		<url>git@github.com:marcosemiao/shade-merge-manifest-transformer.git</url>
+		<connection>scm:git:git@github.com:marcosemiao/maven-shade-merge-manifest-transformer.git</connection>
+		<developerConnection>scm:git:git@github.com:marcosemiao/maven-shade-merge-manifest-transformer.git</developerConnection>
+		<url>git@github.com:marcosemiao/maven-shade-merge-manifest-transformer.git</url>
 		<tag>HEAD</tag>
 	</scm>
 
