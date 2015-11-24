@@ -38,9 +38,8 @@ import org.codehaus.plexus.util.IOUtil;
  * @author Marco Semiao
  *
  */
-public class ConcatManifestResourceTransformer extends ManifestResourceTransformer {
+public class MergeManifestResourceTransformer extends ManifestResourceTransformer {
 
-    // Configuration
     protected String mainClass;
 
     protected Map<String, Attributes> manifestEntries;
@@ -61,7 +60,6 @@ public class ConcatManifestResourceTransformer extends ManifestResourceTransform
 
     @Override
     public void modifyOutputStream(final JarOutputStream jos) throws IOException {
-	// If we didn't find a manifest, then let's create one.
 	if (manifest == null) {
 	    manifest = new Manifest();
 	}
