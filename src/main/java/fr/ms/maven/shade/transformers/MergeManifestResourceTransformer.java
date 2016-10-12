@@ -40,43 +40,44 @@ import org.codehaus.plexus.util.IOUtil;
  */
 public class MergeManifestResourceTransformer extends ManifestResourceTransformer {
 
-    protected String mainClass;
+	protected String mainClass;
 
-    protected Map<String, Attributes> manifestEntries;
+	protected Map<String, String> manifestEntries;
 
-    protected Manifest manifest;
+	protected Manifest manifest;
 
-    @Override
-    public void processResource(final String resource, final InputStream is, final List<Relocator> relocators) throws IOException {
-	if (manifest == null) {
-	    manifest = new Manifest(is);
-	} else {
-	    final Manifest currentManifest = new Manifest(is);
-	    manifest.getMainAttributes().putAll(currentManifest.getMainAttributes());
-	    manifest.getEntries().putAll(currentManifest.getEntries());
-	}
-	IOUtil.close(is);
-    }
-
-    @Override
-    public void modifyOutputStream(final JarOutputStream jos) throws IOException {
-	if (manifest == null) {
-	    manifest = new Manifest();
+	@Override
+	public void processResource(final String resource, final InputStream is, final List<Relocator> relocators)
+			throws IOException {
+		if (manifest == null) {
+			manifest = new Manifest(is);
+		} else {
+			final Manifest currentManifest = new Manifest(is);
+			manifest.getMainAttributes().putAll(currentManifest.getMainAttributes());
+			manifest.getEntries().putAll(currentManifest.getEntries());
+		}
+		IOUtil.close(is);
 	}
 
-	final Attributes attributes = manifest.getMainAttributes();
+	@Override
+	public void modifyOutputStream(final JarOutputStream jos) throws IOException {
+		if (manifest == null) {
+			manifest = new Manifest();
+		}
 
-	if (mainClass != null) {
-	    attributes.put(Attributes.Name.MAIN_CLASS, mainClass);
+		final Attributes attributes = manifest.getMainAttributes();
+
+		if (mainClass != null) {
+			attributes.put(Attributes.Name.MAIN_CLASS, mainClass);
+		}
+
+		if (manifestEntries != null) {
+			for (final Map.Entry<String, String> entry : manifestEntries.entrySet()) {
+				attributes.put(new Attributes.Name(entry.getKey()), entry.getValue());
+			}
+		}
+
+		jos.putNextEntry(new JarEntry(JarFile.MANIFEST_NAME));
+		manifest.write(jos);
 	}
-
-	if (manifestEntries != null) {
-	    for (final Map.Entry<String, Attributes> entry : manifestEntries.entrySet()) {
-		attributes.put(new Attributes.Name(entry.getKey()), entry.getValue());
-	    }
-	}
-
-	jos.putNextEntry(new JarEntry(JarFile.MANIFEST_NAME));
-	manifest.write(jos);
-    }
 }
