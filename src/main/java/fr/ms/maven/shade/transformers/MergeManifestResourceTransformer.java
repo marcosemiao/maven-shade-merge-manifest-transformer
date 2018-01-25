@@ -42,7 +42,7 @@ public class MergeManifestResourceTransformer extends ManifestResourceTransforme
 
 	protected String mainClass;
 
-	protected Map<String, String> manifestEntries;
+	protected Map<String, Object> manifestEntries;
 
 	protected Manifest manifest;
 
@@ -72,7 +72,7 @@ public class MergeManifestResourceTransformer extends ManifestResourceTransforme
 		}
 
 		if (manifestEntries != null) {
-			for (final Map.Entry<String, String> entry : manifestEntries.entrySet()) {
+			for (final Map.Entry<String, Object> entry : manifestEntries.entrySet()) {
 				attributes.put(new Attributes.Name(entry.getKey()), entry.getValue());
 			}
 		}
