@@ -42,13 +42,13 @@ public class MergeManifestResourceTransformer extends ManifestResourceTransforme
 
 	protected String mainClass;
 
-	protected Map<String, Object> manifestEntries;
+	protected Map<String, Attributes> manifestEntries;
 
 	protected Manifest manifest;
 
 	@Override
-	public void processResource(final String resource, final InputStream is, final List<Relocator> relocators)
-			throws IOException {
+	public void processResource(final String resource, final InputStream is, final List<Relocator> relocators,
+			final long time) throws IOException {
 		if (manifest == null) {
 			manifest = new Manifest(is);
 		} else {
@@ -72,7 +72,7 @@ public class MergeManifestResourceTransformer extends ManifestResourceTransforme
 		}
 
 		if (manifestEntries != null) {
-			for (final Map.Entry<String, Object> entry : manifestEntries.entrySet()) {
+			for (final Map.Entry<String, Attributes> entry : manifestEntries.entrySet()) {
 				attributes.put(new Attributes.Name(entry.getKey()), entry.getValue());
 			}
 		}
