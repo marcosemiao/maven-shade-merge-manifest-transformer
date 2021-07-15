@@ -16,7 +16,7 @@ la dépendance permet de récuperer le manifest d'origine et d'injecter une vale
 		<dependency>
 			<groupId>com.github.marcosemiao.maven.plugins.shade.resource</groupId>
 			<artifactId>maven-shade-merge-manifest-transformer</artifactId>
-			<version>0.0.2</version>
+			<version>0.0.3</version>
 		</dependency>
 	</dependencies>
 	<configuration>
