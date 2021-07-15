@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.jar.Attributes;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -42,7 +43,7 @@ public class MergeManifestResourceTransformer extends ManifestResourceTransforme
 
 	protected String mainClass;
 
-	protected Map<String, Attributes> manifestEntries;
+	protected Map<String, Object> manifestEntries;
 
 	protected Manifest manifest;
 
@@ -72,12 +73,18 @@ public class MergeManifestResourceTransformer extends ManifestResourceTransforme
 		}
 
 		if (manifestEntries != null) {
-			for (final Map.Entry<String, Attributes> entry : manifestEntries.entrySet()) {
+			for (final Entry<String, Object> entry : manifestEntries.entrySet()) {
 				attributes.put(new Attributes.Name(entry.getKey()), entry.getValue());
 			}
 		}
 
 		jos.putNextEntry(new JarEntry(JarFile.MANIFEST_NAME));
 		manifest.write(jos);
+	}
+
+	@Override
+	public void setManifestEntries(final Map<String, Object> manifestEntries) {
+		super.setManifestEntries(manifestEntries);
+		this.manifestEntries = manifestEntries;
 	}
 }
