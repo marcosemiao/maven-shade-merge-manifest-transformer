@@ -3,7 +3,7 @@
 
 	<groupId>com.github.marcosemiao.maven.plugins.shade.resource</groupId>
 	<artifactId>maven-shade-merge-manifest-transformer</artifactId>
-	<version>0.0.3-SNAPSHOT</version>
+	<version>0.0.3</version>
 
 	<packaging>jar</packaging>
 
@@ -32,7 +32,7 @@
 		<connection>scm:git:git@github.com:marcosemiao/maven-shade-merge-manifest-transformer.git</connection>
 		<developerConnection>scm:git:git@github.com:marcosemiao/maven-shade-merge-manifest-transformer.git</developerConnection>
 		<url>git@github.com:marcosemiao/maven-shade-merge-manifest-transformer.git</url>
-		<tag>HEAD</tag>
+		<tag>maven-shade-merge-manifest-transformer-0.0.3</tag>
 	</scm>
 
 	<distributionManagement>
